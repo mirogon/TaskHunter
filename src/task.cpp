@@ -1,6 +1,6 @@
 #include "task.h"
 
-Task::Task(uint32 pTaskID, std::string pTaskDescription, std::string pTaskCategory)
+Task::Task(uint32_t pTaskID, std::string pTaskDescription, std::string pTaskCategory)
 {
 	mTaskID = pTaskID;
 	mTaskDescription = pTaskDescription;
@@ -9,7 +9,7 @@ Task::Task(uint32 pTaskID, std::string pTaskDescription, std::string pTaskCatego
 }
 void Task::SetTaskID(uint32_t pNewTaskID)
 {
-	mTaskID = pNewTaskID
+	mTaskID = pNewTaskID;
 }
 
 void Task::SetTaskDescription(std::string pNewTaskDescription)

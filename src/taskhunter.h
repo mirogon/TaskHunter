@@ -1,21 +1,23 @@
+#pragma once
 #include "task.h"
 
 class TaskHunter
 {
-	public:
+public:
 
 	TaskHunter();
-	~TaskHunter();
+	~TaskHunter() = default;
 
-	void HandleArgv(int 
-
+	void HandleArgv(int pArgc, char** pArgv);
 	void AddTask(Task pNewTask);
-	void DeleteTask(uint32_t pTaskID);	
+	void DeleteTask(uint32_t pTaskID);
 	void PrintTasks();
 
 	std::vector<Task> GetTasks();
-	
-	private:
+
+private:
+
+	//void SerializeInTasks();
 
 	std::vector<Task> mTasks;
-}
+};
