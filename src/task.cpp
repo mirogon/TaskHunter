@@ -3,8 +3,9 @@
 Task::Task(uint32_t pTaskID, std::string pTaskDescription, std::string pTaskCategory)
 {
 	mTaskID = pTaskID;
-	mTaskDescription = pTaskDescription;
-	mTaskCategory = pTaskCategory;
+
+	strcpy(mTaskDescription, pTaskDescription.c_str());
+	strcpy(mTaskCategory, pTaskCategory.c_str());
 	
 }
 void Task::SetTaskID(uint32_t pNewTaskID)
@@ -14,12 +15,12 @@ void Task::SetTaskID(uint32_t pNewTaskID)
 
 void Task::SetTaskDescription(std::string pNewTaskDescription)
 {
-	mTaskDescription = pNewTaskDescription;
+	strcpy(mTaskDescription, pNewTaskDescription.c_str());
 }
 
 void Task::SetTaskCategory(std::string pNewCategory)
 {
-	mTaskCategory=pNewCategory;
+	strcpy(mTaskCategory, pNewCategory.c_str());
 }
 
 uint32_t Task::GetTaskID()

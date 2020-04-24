@@ -317,6 +317,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="E:\DEV\C++\Projects\TaskHunter\src\main.cpp" />
+    <ClCompile Include="E:\DEV\C++\Projects\TaskHunter\src\global.cpp" />
     <ClCompile Include="E:\DEV\C++\Projects\TaskHunter\src\task.cpp" />
     <ClCompile Include="E:\DEV\C++\Projects\TaskHunter\src\taskhunter.cpp" />
   </ItemGroup>

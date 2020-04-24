@@ -4,6 +4,9 @@
     <ClCompile Include="E:\DEV\C++\Projects\TaskHunter\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="E:\DEV\C++\Projects\TaskHunter\src\global.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="E:\DEV\C++\Projects\TaskHunter\src\task.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

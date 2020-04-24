@@ -20,7 +20,7 @@ public:
 private:
 
 	uint32_t 		mTaskID;
-	std::string 	mTaskCategory;
-	std::string 	mTaskDescription;
+	char 			mTaskCategory[32];
+	char		 	mTaskDescription[64];
 
 };

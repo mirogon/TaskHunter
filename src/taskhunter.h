@@ -17,7 +17,10 @@ public:
 
 private:
 
-	//void SerializeInTasks();
+	void SerializeInTasks();
+	void SerializeOutTasks();
+
+	m1::raw_serializer mSerializer;
 
 	std::vector<Task> mTasks;
 };

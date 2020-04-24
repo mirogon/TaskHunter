@@ -1,4 +1,4 @@
-list(APPEND _source_files main.cpp task.cpp taskhunter.cpp)
+list(APPEND _source_files main.cpp global.cpp task.cpp taskhunter.cpp)
 
 add_executable(TaskHunter ${_source_files})
 
