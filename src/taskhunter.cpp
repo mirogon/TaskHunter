@@ -39,6 +39,7 @@ void TaskHunter::HandleArgv(int pArgc, char** pArgv)
 				}
 			
 				AddTask(newTask);
+				std::cout << "Added new Task" << std::endl;;
 				PrintTasks();
 			}
 
@@ -49,6 +50,8 @@ void TaskHunter::HandleArgv(int pArgc, char** pArgv)
 				if (id >= 0)
 				{
 					DeleteTask(id);
+					std::cout << "Deleted Task with ID: " << id << std::endl;
+					PrintTasks();
 				}
 			}
 
@@ -68,13 +71,24 @@ void TaskHunter::AddTask(Task pNewTask)
 
 void TaskHunter::DeleteTask(uint32_t pTaskID)
 {
+
+	bool startDecrementing = false;
+
 	for(int i = 0; i < mTasks.size();++i)
 	{
 		if(mTasks.at(i).GetTaskID() == pTaskID)
 		{
 			mTasks.erase(mTasks.begin() + i);
+			mTasks.shrink_to_fit();
+			startDecrementing = true;
+		}
+
+		if (startDecrementing)
+		{
+			mTasks.at(i).SetTaskID(mTasks.at(i).GetTaskID() - 1);
 		}
 	}
+
 	SerializeOutTasks();
 }
 
