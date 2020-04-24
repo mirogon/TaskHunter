@@ -2,4 +2,4 @@
 
 ## How To use
 
-**taskhunter <command> <parameters>**
+**taskhunter (command) (parameters)**
