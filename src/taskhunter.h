@@ -12,6 +12,7 @@ public:
 	void AddTask(Task pNewTask);
 	void DeleteTask(uint32_t pTaskID);
 	void PrintTasks();
+	void PrintTasksFiltered(std::string pCategory);
 
 	std::vector<Task> GetTasks();
 

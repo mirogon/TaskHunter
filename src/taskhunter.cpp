@@ -15,7 +15,7 @@ void TaskHunter::HandleArgv(int pArgc, char** pArgv)
 	//std::cout << "ARGC: " << pArgc << std::endl;
 
 	std::vector<std::string> argvStrings;
-	for (int i = 0; i < pArgc-1; ++i)
+	for (int i = 0; i < pArgc; ++i)
 	{
 		argvStrings.push_back(pArgv[i]);
 	}
@@ -27,7 +27,6 @@ void TaskHunter::HandleArgv(int pArgc, char** pArgv)
 
 	else if (pArgc > 1)
 	{
-		
 		if (pArgc > 2)
 		{
 			if (argvStrings[1] == "add")
@@ -55,9 +54,18 @@ void TaskHunter::HandleArgv(int pArgc, char** pArgv)
 				}
 			}
 
+			
+
 			else if (argvStrings[1] == "modify")
 			{
 
+			}
+		}
+		else
+		{
+			if (argvStrings[1] == "list")
+			{
+				PrintTasks();
 			}
 		}
 	}
@@ -83,7 +91,7 @@ void TaskHunter::DeleteTask(uint32_t pTaskID)
 			startDecrementing = true;
 		}
 
-		if (startDecrementing)
+		if (startDecrementing && mTasks.size() > 1)
 		{
 			mTasks.at(i).SetTaskID(mTasks.at(i).GetTaskID() - 1);
 		}
@@ -100,6 +108,67 @@ void TaskHunter::PrintTasks()
 
 	for(int i = 0; i <mTasks.size();++i)
 	{
+		uint32_t id = mTasks.at(i).GetTaskID();
+
+		std::cout << id;
+
+		//Calc extra spaces
+		numExtraSpaces = 6;
+		if (id > 1)
+		{
+			numExtraSpaces = 6;
+		}
+		if (id > 10)
+		{
+			numExtraSpaces = 5;
+		}
+		if (id > 100)
+		{
+			numExtraSpaces = 4;
+		}
+		if (id > 1000)
+		{
+			numExtraSpaces = 3;
+		}
+
+		//Cout extra spaces
+		for (int i = 0; i < numExtraSpaces; ++i)
+		{
+			std::cout << " ";
+		}
+
+		std::cout << mTasks.at(i).GetTaskCategory();
+
+		//Calc extra spaces
+		numExtraSpaces = 13 - mTasks.at(i).GetTaskCategory().size();
+		if (numExtraSpaces < 0)
+		{
+			numExtraSpaces = 0;
+		}
+		//Cout extra spaces
+		for (int i = 0; i < numExtraSpaces; ++i)
+		{
+			std::cout << " ";
+		}
+
+		std::cout << mTasks.at(i).GetTaskDescription() << std::endl;
+	}
+}
+
+void TaskHunter::PrintTasksFiltered(std::string pCategory)
+{
+	std::cout << "ID  |  Category  |  Description" << std::endl << std::endl;
+
+	short numExtraSpaces = 0;
+
+	for (int i = 0; i < mTasks.size(); ++i)
+	{
+
+		if (mTasks.at(i).GetTaskCategory() != pCategory)
+		{
+			continue;
+		}
+
 		uint32_t id = mTasks.at(i).GetTaskID();
 
 		std::cout << id;
