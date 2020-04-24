@@ -11,6 +11,8 @@
 #include "M1Serialization/include/M1Serialization.h"
 
 extern const std::string PATH_SERIALIZATION;
+constexpr uint8_t LENGTH_TASKDESCRIPTION = 64;
+constexpr uint8_t LENGTH_TASKCATEGORY = 13;
 
 namespace m1
 {

@@ -32,7 +32,12 @@ void TaskHunter::HandleArgv(int pArgc, char** pArgv)
 		{
 			if (argvStrings[1] == "add")
 			{
-				Task newTask = Task(mTasks.size(), pArgv[2]);
+				Task newTask{ static_cast<uint32_t>(mTasks.size()), pArgv[2]};
+				if (pArgc > 3)
+				{
+					newTask = Task(static_cast<uint32_t>(mTasks.size()), pArgv[2], pArgv[3]);
+				}
+			
 				AddTask(newTask);
 				PrintTasks();
 			}
@@ -75,7 +80,7 @@ void TaskHunter::DeleteTask(uint32_t pTaskID)
 
 void TaskHunter::PrintTasks()
 {
-	std::cout<<"ID  |  Category  |  Description"<<std::endl;
+	std::cout<<"ID  |  Category  |  Description"<<std::endl<<std::endl;
 
 	short numExtraSpaces = 0;
 

@@ -10,8 +10,8 @@ public:
 	~Task() = default;
 
 	void			SetTaskID(uint32_t pNewTaskID);
-	void			SetTaskDescription(std::string pNewTaskDescription);
-	void			SetTaskCategory(std::string pNewCategory);
+	bool			SetTaskDescription(std::string pNewTaskDescription);
+	bool			SetTaskCategory(std::string pNewCategory);
 
 	uint32_t 		GetTaskID();
 	std::string 	GetTaskDescription();
@@ -20,7 +20,7 @@ public:
 private:
 
 	uint32_t 		mTaskID;
-	char 			mTaskCategory[32];
-	char		 	mTaskDescription[64];
+	char 			mTaskCategory[LENGTH_TASKCATEGORY];
+	char		 	mTaskDescription[LENGTH_TASKDESCRIPTION];
 
 };

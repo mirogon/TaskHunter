@@ -2,25 +2,41 @@
 
 Task::Task(uint32_t pTaskID, std::string pTaskDescription, std::string pTaskCategory)
 {
-	mTaskID = pTaskID;
+	SetTaskID(pTaskID);
 
-	strcpy(mTaskDescription, pTaskDescription.c_str());
-	strcpy(mTaskCategory, pTaskCategory.c_str());
-	
+	if (!SetTaskDescription(pTaskDescription))
+	{
+		std::cout << "Error: Task description is too long!" << std::endl;
+	}
+
+	if (!SetTaskCategory(pTaskCategory))
+	{
+		std::cout << "Error: Task category is too long!" << std::endl;
+	}
 }
 void Task::SetTaskID(uint32_t pNewTaskID)
 {
 	mTaskID = pNewTaskID;
 }
 
-void Task::SetTaskDescription(std::string pNewTaskDescription)
+bool Task::SetTaskDescription(std::string pNewTaskDescription)
 {
+	if (pNewTaskDescription.size() > LENGTH_TASKDESCRIPTION)
+	{
+		return false;
+	}
 	strcpy(mTaskDescription, pNewTaskDescription.c_str());
+	return true;
 }
 
-void Task::SetTaskCategory(std::string pNewCategory)
+bool Task::SetTaskCategory(std::string pNewCategory)
 {
+	if (pNewCategory.size() > LENGTH_TASKCATEGORY)
+	{
+		return false;
+	}
 	strcpy(mTaskCategory, pNewCategory.c_str());
+	return true;
 }
 
 uint32_t Task::GetTaskID()
