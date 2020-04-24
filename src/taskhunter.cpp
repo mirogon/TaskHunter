@@ -12,7 +12,7 @@ TaskHunter::TaskHunter():
 // taskhunter main_command main_command_parameter options
 void TaskHunter::HandleArgv(int pArgc, char** pArgv)
 {
-	std::cout << "ARGC: " << pArgc << std::endl;
+	//std::cout << "ARGC: " << pArgc << std::endl;
 
 	std::vector<std::string> argvStrings;
 	for (int i = 0; i < pArgc-1; ++i)
@@ -149,7 +149,6 @@ void TaskHunter::SerializeInTasks()
 
 	uint16_t numTasks;
 	rsi.serialize_in(numTasks);
-	std::cout << "Serialize in numTasks: " << numTasks << std::endl;
 
 	mTasks.clear();
 	mTasks.shrink_to_fit();
@@ -169,7 +168,6 @@ void TaskHunter::SerializeOutTasks()
 
 	uint16_t numTasks;
 	numTasks = mTasks.size();
-	std::cout << "Serialize out numTasks: " << numTasks << std::endl;
 
 	mSerializer.serialize_out(numTasks);
 

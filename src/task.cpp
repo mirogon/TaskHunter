@@ -6,11 +6,13 @@ Task::Task(uint32_t pTaskID, std::string pTaskDescription, std::string pTaskCate
 
 	if (!SetTaskDescription(pTaskDescription))
 	{
+		mTaskDescription[0] = '\0';
 		std::cout << "Error: Task description is too long!" << std::endl;
 	}
 
 	if (!SetTaskCategory(pTaskCategory))
 	{
+		mTaskCategory[0] = '\0';
 		std::cout << "Error: Task category is too long!" << std::endl;
 	}
 }
