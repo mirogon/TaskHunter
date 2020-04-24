@@ -54,8 +54,6 @@ void TaskHunter::HandleArgv(int pArgc, char** pArgv)
 				}
 			}
 
-			
-
 			else if (argvStrings[1] == "modify")
 			{
 
