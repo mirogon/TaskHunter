@@ -7,14 +7,18 @@
 #include <sstream>
 #include <vector>
 #include <filesystem>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <Windows.h>
+#include <ShlObj.h>
+
 //M1
 #include "M1Serialization/include/M1Serialization.h"
 
-extern const std::string PATH_SERIALIZATION;
 constexpr uint8_t LENGTH_TASKDESCRIPTION = 64;
 constexpr uint8_t LENGTH_TASKCATEGORY = 13;
 
-extern std::string PATH_BINARY;
+extern std::string PATH_SERIALIZATION;
 
 namespace m1
 {
