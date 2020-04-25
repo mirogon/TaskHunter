@@ -74,7 +74,7 @@ void TaskHunter::HandleArgv(int pArgc, char** pArgv)
 				PrintTasks();
 			}
 
-			else if (argvStrings[1] == "active")
+			else if (argvStrings[1] == "active" || argvStrings[1] == "activated")
 			{
 				PrintActiveTasks();
 			}
@@ -102,7 +102,7 @@ void TaskHunter::DeleteTask(uint32_t pTaskID)
 			startDecrementing = true;
 		}
 
-		if (startDecrementing && mTasks.size() > 1)
+		if (startDecrementing && mTasks.size() > 1 && i < mTasks.size())
 		{
 			mTasks.at(i).SetTaskID(mTasks.at(i).GetTaskID() - 1);
 		}
@@ -118,8 +118,11 @@ void TaskHunter::ActivateTask(uint32_t pTaskID)
 		if (pTaskID == mTasks.at(i).GetTaskID())
 		{
 			mTasks.at(i).Activate();
+			std::cout << "Activated Task with ID: " << pTaskID << std::endl;
 		}
 	}
+
+	SerializeOutTasks();
 }
 
 void TaskHunter::PrintTasks()
