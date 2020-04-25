@@ -3,11 +3,11 @@
 int main(int argc, char** argv)
 {
 
-	PATH_BINARY = argv[0];
+	/*PATH_BINARY = argv[0];
 	
-	for (auto i = PATH_BINARY.end() - 1; i != PATH_BINARY.begin(); --i)
+	for (int i = PATH_BINARY.size() -1 ; i > 0; --i)
 	{
-		if (*i == '/')
+		if (PATH_BINARY.at(i) == '/')
 		{
 			break;
 		}
@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 	}
 
 	PATH_BINARY += "TaskHunter.m1data";
-
+	*/
 	TaskHunter th = TaskHunter();
 
 	th.HandleArgv(argc, argv);	

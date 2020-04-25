@@ -14,7 +14,7 @@ extern const std::string PATH_SERIALIZATION;
 constexpr uint8_t LENGTH_TASKDESCRIPTION = 64;
 constexpr uint8_t LENGTH_TASKCATEGORY = 13;
 
-std::string PATH_BINARY;
+extern std::string PATH_BINARY;
 
 namespace m1
 {

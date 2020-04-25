@@ -314,7 +314,7 @@ void TaskHunter::SerializeInTasks()
 		return;
 	}
 
-	m1::raw_serializer rsi = m1::raw_serializer(PATH_BINARY);
+	m1::raw_serializer rsi = m1::raw_serializer(PATH_SERIALIZATION);
 
 	uint16_t numTasks;
 	rsi.serialize_in(numTasks);
@@ -333,7 +333,7 @@ void TaskHunter::SerializeInTasks()
 
 void TaskHunter::SerializeOutTasks()
 {
-	m1::raw_serializer rso = m1::raw_serializer(PATH_BINARY, true, false);
+	m1::raw_serializer rso = m1::raw_serializer(PATH_SERIALIZATION, true, false);
 
 	uint16_t numTasks;
 	numTasks = mTasks.size();
