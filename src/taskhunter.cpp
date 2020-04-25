@@ -54,23 +54,29 @@ void TaskHunter::HandleArgv(int pArgc, char** pArgv)
 				}
 			}
 
-			else if (argvStrings[1] == "start")
-			{
-				int id = std::stoi(pArgv[2]);
-				StartTask(id);
-			}
-
 			else if (argvStrings[1] == "list")
 			{
 				PrintTasksFiltered(argvStrings[2]);
 			}
 
+
+			else if (argvStrings[1] == "activate")
+			{
+				int id = std::stoi(pArgv[2]);
+				ActivateTask(id);
+			}
+			
 		}
 		else
 		{
 			if (argvStrings[1] == "list")
 			{
 				PrintTasks();
+			}
+
+			else if (argvStrings[1] == "active")
+			{
+				PrintActiveTasks();
 			}
 		}
 	}
@@ -105,7 +111,7 @@ void TaskHunter::DeleteTask(uint32_t pTaskID)
 	SerializeOutTasks();
 }
 
-void TaskHunter::StartTask(uint32_t pTaskID)
+void TaskHunter::ActivateTask(uint32_t pTaskID)
 {
 	for (int i = 0; i < mTasks.size(); ++i)
 	{
@@ -181,6 +187,67 @@ void TaskHunter::PrintTasksFiltered(std::string pCategory)
 	{
 
 		if (mTasks.at(i).GetTaskCategory() != pCategory)
+		{
+			continue;
+		}
+
+		uint32_t id = mTasks.at(i).GetTaskID();
+
+		std::cout << id;
+
+		//Calc extra spaces
+		numExtraSpaces = 6;
+		if (id > 1)
+		{
+			numExtraSpaces = 6;
+		}
+		if (id > 10)
+		{
+			numExtraSpaces = 5;
+		}
+		if (id > 100)
+		{
+			numExtraSpaces = 4;
+		}
+		if (id > 1000)
+		{
+			numExtraSpaces = 3;
+		}
+
+		//Cout extra spaces
+		for (int i = 0; i < numExtraSpaces; ++i)
+		{
+			std::cout << " ";
+		}
+
+		std::cout << mTasks.at(i).GetTaskCategory();
+
+		//Calc extra spaces
+		numExtraSpaces = 13 - mTasks.at(i).GetTaskCategory().size();
+		if (numExtraSpaces < 0)
+		{
+			numExtraSpaces = 0;
+		}
+		//Cout extra spaces
+		for (int i = 0; i < numExtraSpaces; ++i)
+		{
+			std::cout << " ";
+		}
+
+		std::cout << mTasks.at(i).GetTaskDescription() << std::endl;
+	}
+}
+
+void TaskHunter::PrintActiveTasks()
+{
+	std::cout << "ID  |  Category  |  Description" << std::endl << std::endl;
+
+	short numExtraSpaces = 0;
+
+	for (int i = 0; i < mTasks.size(); ++i)
+	{
+
+		if (!mTasks.at(i).IsActive())
 		{
 			continue;
 		}
