@@ -11,6 +11,7 @@ public:
 	void HandleArgv(int pArgc, char** pArgv);
 	void AddTask(Task pNewTask);
 	void DeleteTask(uint32_t pTaskID);
+	void StartTask(uint32_t pTaskID);
 	void PrintTasks();
 	void PrintTasksFiltered(std::string pCategory);
 

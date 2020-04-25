@@ -15,6 +15,9 @@ Task::Task(uint32_t pTaskID, std::string pTaskDescription, std::string pTaskCate
 		mTaskCategory[0] = '\0';
 		std::cout << "Error: Task category is too long!" << std::endl;
 	}
+
+	mIsActive = false;
+
 }
 void Task::SetTaskID(uint32_t pNewTaskID)
 {
@@ -41,6 +44,11 @@ bool Task::SetTaskCategory(std::string pNewCategory)
 	return true;
 }
 
+void Task::Activate()
+{
+	mIsActive = true;
+}
+
 uint32_t Task::GetTaskID()
 {
 	return mTaskID;
@@ -54,4 +62,9 @@ std::string Task::GetTaskDescription()
 std::string Task::GetTaskCategory()
 {
 	return mTaskCategory;
+}
+
+bool Task::IsActive()
+{
+	return mIsActive;
 }

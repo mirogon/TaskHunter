@@ -54,10 +54,17 @@ void TaskHunter::HandleArgv(int pArgc, char** pArgv)
 				}
 			}
 
-			else if (argvStrings[1] == "modify")
+			else if (argvStrings[1] == "start")
 			{
-
+				int id = std::stoi(pArgv[2]);
+				StartTask(id);
 			}
+
+			else if (argvStrings[1] == "list")
+			{
+				PrintTasksFiltered(argvStrings[2]);
+			}
+
 		}
 		else
 		{
@@ -96,6 +103,17 @@ void TaskHunter::DeleteTask(uint32_t pTaskID)
 	}
 
 	SerializeOutTasks();
+}
+
+void TaskHunter::StartTask(uint32_t pTaskID)
+{
+	for (int i = 0; i < mTasks.size(); ++i)
+	{
+		if (pTaskID == mTasks.at(i).GetTaskID())
+		{
+			mTasks.at(i).Activate();
+		}
+	}
 }
 
 void TaskHunter::PrintTasks()
